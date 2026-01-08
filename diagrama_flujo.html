@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagrama de Flujo - Planta RTB/SALFA</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0a0e27 0%, #0f1433 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .diagram-container {
+            background: rgba(26, 31, 58, 0.9);
+            border: 2px solid #00d4ff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #00d4ff;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #00ff41;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        svg {
+            width: 100%;
+            height: auto;
+        }
+
+        .legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #e0e6ff;
+            font-size: 13px;
+        }
+
+        .legend-color {
+            width: 30px;
+            height: 20px;
+            border-radius: 4px;
+        }
+
+        .color-tank-accumulation {
+            background: #1a4d2e;
+            border: 2px solid #0d3009;
+        }
+
+        .color-tank-reactor {
+            background: #2d5016;
+            border: 2px solid #1a3009;
+        }
+
+        .color-tank-clarifier {
+            background: #0d3b66;
+            border: 2px solid #082555;
+        }
+
+        .color-pipe {
+            background: #00d4ff;
+        }
+
+        .color-aerator {
+            background: #ff8c00;
+        }
+    </style>
+</head>
+<body>
+    <div class="diagram-container">
+        <h1>⚙️ Diagrama de Flujo - Sistema RTB/SALFA</h1>
+        <p class="subtitle">Planta de Tratamiento de Aguas Servidas RTB30 (30 m³)</p>
+
+        <svg viewBox="0 0 1000 450" xmlns="http://www.w3.org/2000/svg">
+            <!-- Fondo -->
+            <rect width="1000" height="450" fill="rgba(10, 14, 39, 0.5)"/>
+
+            <!-- ETAPA 1: ACUMULACIÓN -->
+            <!-- Tanque de acumulación -->
+            <rect x="50" y="150" width="90" height="100" rx="10" fill="#1a4d2e" stroke="#0d3009" stroke-width="2"/>
+            <line x1="60" y1="180" x2="130" y2="180" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <line x1="60" y1="210" x2="130" y2="210" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <line x1="60" y1="240" x2="130" y2="240" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <!-- Agua interna -->
+            <rect x="52" y="180" width="86" height="68" fill="rgba(0, 102, 204, 0.2)"/>
+            <!-- Etiqueta -->
+            <text x="95" y="215" font-size="13" font-weight="bold" fill="#00ff41" text-anchor="middle">ACUMULACIÓN</text>
+            <text x="95" y="235" font-size="11" fill="#00d4ff" text-anchor="middle">7 m³</text>
+
+            <!-- Entrada -->
+            <text x="20" y="205" font-size="12" fill="#ff8c00" font-weight="bold">ENTRADA</text>
+            <line x1="40" y1="200" x2="50" y2="200" stroke="#00d4ff" stroke-width="3"/>
+            <polygon points="50,200 55,195 55,205" fill="#00d4ff"/>
+
+            <!-- ETAPA 2: REACTORES BIOLÓGICOS (3 tanques) -->
+
+            <!-- Reactor 1 -->
+            <rect x="200" y="150" width="85" height="100" rx="10" fill="#2d5016" stroke="#1a3009" stroke-width="2"/>
+            <line x1="210" y1="180" x2="280" y2="180" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <line x1="210" y1="210" x2="280" y2="210" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <line x1="210" y1="240" x2="280" y2="240" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <!-- Agua -->
+            <rect x="202" y="180" width="81" height="68" fill="rgba(0, 102, 204, 0.2)"/>
+            <!-- Burbujas -->
+            <circle cx="220" cy="120" r="4" fill="rgba(100, 200, 255, 0.6)"/>
+            <circle cx="235" cy="110" r="3" fill="rgba(100, 200, 255, 0.4)"/>
+            <circle cx="250" cy="115" r="4" fill="rgba(100, 200, 255, 0.5)"/>
+            <!-- Aireador -->
+            <circle cx="242" cy="100" r="12" fill="#ff8c00" stroke="#ffa500" stroke-width="2"/>
+            <line x1="235" y1="100" x2="249" y2="100" stroke="#ffb84d" stroke-width="1.5"/>
+            <line x1="242" y1="93" x2="242" y2="107" stroke="#ffb84d" stroke-width="1.5"/>
+            <line x1="235" y1="107" x2="249" y2="93" stroke="#ffb84d" stroke-width="1.5"/>
+            <!-- Tuberías aire -->
+            <line x1="238" y1="112" x2="238" y2="150" stroke="rgba(255, 140, 0, 0.6)" stroke-width="1.5"/>
+            <line x1="246" y1="112" x2="246" y2="150" stroke="rgba(255, 140, 0, 0.6)" stroke-width="1.5"/>
+            <!-- Etiqueta -->
+            <text x="242" y="215" font-size="12" font-weight="bold" fill="#00ff41" text-anchor="middle">REACTOR</text>
+            <text x="242" y="230" font-size="11" fill="#00d4ff" text-anchor="middle">3.3 m³ c/u</text>
+
+            <!-- Reactor 2 -->
+            <rect x="355" y="150" width="85" height="100" rx="10" fill="#2d5016" stroke="#1a3009" stroke-width="2"/>
+            <line x1="365" y1="180" x2="435" y2="180" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <line x1="365" y1="210" x2="435" y2="210" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <line x1="365" y1="240" x2="435" y2="240" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <rect x="357" y="180" width="81" height="68" fill="rgba(0, 102, 204, 0.2)"/>
+            <!-- Burbujas -->
+            <circle cx="375" cy="120" r="4" fill="rgba(100, 200, 255, 0.6)"/>
+            <circle cx="390" cy="110" r="3" fill="rgba(100, 200, 255, 0.4)"/>
+            <circle cx="405" cy="115" r="4" fill="rgba(100, 200, 255, 0.5)"/>
+            <!-- Aireador -->
+            <circle cx="397" cy="100" r="12" fill="#ff8c00" stroke="#ffa500" stroke-width="2"/>
+            <line x1="390" y1="100" x2="404" y2="100" stroke="#ffb84d" stroke-width="1.5"/>
+            <line x1="397" y1="93" x2="397" y2="107" stroke="#ffb84d" stroke-width="1.5"/>
+            <line x1="390" y1="107" x2="404" y2="93" stroke="#ffb84d" stroke-width="1.5"/>
+            <line x1="393" y1="112" x2="393" y2="150" stroke="rgba(255, 140, 0, 0.6)" stroke-width="1.5"/>
+            <line x1="401" y1="112" x2="401" y2="150" stroke="rgba(255, 140, 0, 0.6)" stroke-width="1.5"/>
+            <text x="397" y="215" font-size="12" font-weight="bold" fill="#00ff41" text-anchor="middle">REACTOR</text>
+            <text x="397" y="230" font-size="11" fill="#00d4ff" text-anchor="middle">3.3 m³ c/u</text>
+
+            <!-- Reactor 3 -->
+            <rect x="510" y="150" width="85" height="100" rx="10" fill="#2d5016" stroke="#1a3009" stroke-width="2"/>
+            <line x1="520" y1="180" x2="590" y2="180" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <line x1="520" y1="210" x2="590" y2="210" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <line x1="520" y1="240" x2="590" y2="240" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <rect x="512" y="180" width="81" height="68" fill="rgba(0, 102, 204, 0.2)"/>
+            <!-- Burbujas -->
+            <circle cx="530" cy="120" r="4" fill="rgba(100, 200, 255, 0.6)"/>
+            <circle cx="545" cy="110" r="3" fill="rgba(100, 200, 255, 0.4)"/>
+            <circle cx="560" cy="115" r="4" fill="rgba(100, 200, 255, 0.5)"/>
+            <!-- Aireador -->
+            <circle cx="552" cy="100" r="12" fill="#ff8c00" stroke="#ffa500" stroke-width="2"/>
+            <line x1="545" y1="100" x2="559" y2="100" stroke="#ffb84d" stroke-width="1.5"/>
+            <line x1="552" y1="93" x2="552" y2="107" stroke="#ffb84d" stroke-width="1.5"/>
+            <line x1="545" y1="107" x2="559" y2="93" stroke="#ffb84d" stroke-width="1.5"/>
+            <line x1="548" y1="112" x2="548" y2="150" stroke="rgba(255, 140, 0, 0.6)" stroke-width="1.5"/>
+            <line x1="556" y1="112" x2="556" y2="150" stroke="rgba(255, 140, 0, 0.6)" stroke-width="1.5"/>
+            <text x="552" y="215" font-size="12" font-weight="bold" fill="#00ff41" text-anchor="middle">REACTOR</text>
+            <text x="552" y="230" font-size="11" fill="#00d4ff" text-anchor="middle">3.3 m³ c/u</text>
+
+            <!-- ETAPA 3: CLARIFICADOR -->
+            <!-- Tanque cónico -->
+            <path d="M 700 150 L 750 250 L 650 250 Z" fill="#0d3b66" stroke="#082555" stroke-width="2"/>
+            <ellipse cx="700" cy="150" rx="50" ry="15" fill="#1a5599" stroke="#082555" stroke-width="2"/>
+            <!-- Agua -->
+            <path d="M 685 180 L 715 180 L 710 240 L 690 240 Z" fill="rgba(0, 102, 204, 0.2)"/>
+            <!-- Etiqueta -->
+            <text x="700" y="215" font-size="12" font-weight="bold" fill="#00ff41" text-anchor="middle">CLARIFICADOR</text>
+            <text x="700" y="230" font-size="11" fill="#00d4ff" text-anchor="middle">3 m³</text>
+
+            <!-- Salida -->
+            <line x1="750" y1="200" x2="800" y2="200" stroke="#00d4ff" stroke-width="3" stroke-dasharray="5,5"/>
+            <polygon points="800,200 795,195 795,205" fill="#00d4ff"/>
+            <text x="825" y="205" font-size="12" fill="#00ff41" font-weight="bold">SALIDA</text>
+
+            <!-- TUBERÍAS DE CONEXIÓN -->
+            <!-- Acumulación a Reactor 1 -->
+            <path d="M 140 200 L 170 200 Q 185 200 200 200" fill="none" stroke="#00d4ff" stroke-width="3" stroke-dasharray="5,5"/>
+            <circle cx="170" cy="200" r="5" fill="#ff8c00"/>
+
+            <!-- Reactor 1 a Reactor 2 -->
+            <path d="M 285 200 L 320 200 Q 338 200 355 200" fill="none" stroke="#00d4ff" stroke-width="3" stroke-dasharray="5,5"/>
+            <circle cx="320" cy="200" r="5" fill="#ff8c00"/>
+
+            <!-- Reactor 2 a Reactor 3 -->
+            <path d="M 440 200 L 475 200 Q 493 200 510 200" fill="none" stroke="#00d4ff" stroke-width="3" stroke-dasharray="5,5"/>
+            <circle cx="475" cy="200" r="5" fill="#ff8c00"/>
+
+            <!-- Reactor 3 a Clarificador -->
+            <path d="M 595 200 L 630 200 Q 665 200 650 220" fill="none" stroke="#00d4ff" stroke-width="3" stroke-dasharray="5,5"/>
+            <circle cx="630" cy="200" r="5" fill="#ff8c00"/>
+
+            <!-- LODOS -->
+            <path d="M 700 250 L 700 300 L 680 300 L 700 250" fill="#4d4d4d" opacity="0.5"/>
+            <text x="670" y="330" font-size="11" fill="#ffa500">Lodos</text>
+
+            <!-- PARÁMETROS DE OPERACIÓN -->
+            <text x="50" y="30" font-size="14" font-weight="bold" fill="#00ff41">Parámetros de Operación:</text>
+            <text x="50" y="50" font-size="12" fill="#e0e6ff">• TRH (Tiempo Retención): 18-24 horas  |  • Caudal: 15-25 m³/día</text>
+            <text x="50" y="68" font-size="12" fill="#e0e6ff">• Ciclo Aireación: 30 min ON / 10 min OFF  |  • Carga Volumétrica: 0.27 kg DBO₅/m³·día</text>
+        </svg>
+
+        <!-- LEYENDA -->
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color color-tank-accumulation"></div>
+                <span>Tanque Acumulación</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color color-tank-reactor"></div>
+                <span>Reactor Biológico</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color color-tank-clarifier"></div>
+                <span>Clarificador/Decantador</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color color-aerator"></div>
+                <span>Aireador (Soplador)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color color-pipe"></div>
+                <span>Tubería de Agua</span>
+            </div>
+            <div class="legend-item">
+                <div style="width: 30px; height: 20px; background: linear-gradient(90deg, transparent, rgba(100,200,255,0.6)); border: 1px dashed #00d4ff;"></div>
+                <span>Flujo de Agua</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
